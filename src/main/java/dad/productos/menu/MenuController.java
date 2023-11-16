@@ -9,7 +9,6 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 
 public class MenuController implements Initializable {
@@ -39,7 +38,8 @@ public class MenuController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub		
+		// TODO Auto-generated method stub
+		
 	}
 	
 	public VBox getView() {
@@ -49,29 +49,31 @@ public class MenuController implements Initializable {
 	@FXML
     void onAddProduct(ActionEvent event) {
     	System.out.println("ir a añadir producto");
-    	if (onAdd != null) {
-    		onAdd.handle(event);
-    	}
+    	if (onAdd != null) onAdd.handle(event);
     }
 
     @FXML
     void onDeleteProduct(ActionEvent event) {
     	System.out.println("ir a eliminar producto");
+    	if (onDelete != null) onDelete.handle(event);
     }
 
     @FXML
     void onListProducts(ActionEvent event) {
     	System.out.println("ir a listar productos");
+    	if (onListProducts != null) onListProducts.handle(event);
     }
 
     @FXML
     void onModifyProduct(ActionEvent event) {
     	System.out.println("ir a modificar producto");
+    	if (onModify != null) onModify.handle(event);
     }
 
     @FXML
     void onShowStock(ActionEvent event) {
     	System.out.println("ir a mostrar stock");
+    	if (onShowStock != null) onShowStock.handle(event);    	
     }
     
     public void setOnAdd(EventHandler<ActionEvent> onInsertar) {

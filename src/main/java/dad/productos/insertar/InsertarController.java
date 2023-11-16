@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -14,6 +15,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 
 public class InsertarController implements Initializable {
+	
+	// actions
+	
+	private EventHandler<ActionEvent> onBack;
 	
 	// view
 	
@@ -57,11 +62,19 @@ public class InsertarController implements Initializable {
     @FXML
     void onCancelar(ActionEvent event) {
     	// TODO volver al menú sin guardar los cambios
+    	System.out.println("cancelar");
+    	if (onBack != null) onBack.handle(event);
     }
 
     @FXML
     void onGuardar(ActionEvent event) {
     	// TODO guardar los cambios y volver al menú
+    	System.out.println("guardar");
+    	if (onBack != null) onBack.handle(event);
     }
+    
+    public void setOnBack(EventHandler<ActionEvent> onBack) {
+		this.onBack = onBack;
+	}
 
 }

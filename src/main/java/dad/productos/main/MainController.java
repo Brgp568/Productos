@@ -39,8 +39,14 @@ public class MainController implements Initializable {
 		// instanciamos los controladores
 		
 		menuController = new MenuController();
+		menuController.setOnAdd(e -> {
+			view.setCenter(insertarController.getView());
+		});
 		
 		insertarController = new InsertarController();
+		insertarController.setOnBack(e -> {
+			view.setCenter(menuController.getView());
+		});
 
 		// inicialmnte mostramos la vista del menú
 		
