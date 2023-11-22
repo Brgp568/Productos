@@ -4,7 +4,12 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import aed.productos.dao.FamiliaDAO;
+import aed.productos.dao.ProductoDAO;
 import aed.productos.entities.Familia;
+import aed.productos.entities.Observacion;
+import aed.productos.entities.Producto;
+import javafx.beans.binding.Bindings;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.ObjectProperty;
@@ -22,6 +27,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
+import javafx.util.converter.NumberStringConverter;
 
 public class InsertarController implements Initializable {
 	
@@ -35,8 +41,7 @@ public class InsertarController implements Initializable {
 	private StringProperty deno = new SimpleStringProperty();
 	private ObjectProperty<Familia> familia = new SimpleObjectProperty<>();
 	private StringProperty observacion = new SimpleStringProperty();
-	private DoubleProperty precio = new SimpleDoubleProperty();
-	
+	private DoubleProperty precio = new SimpleDoubleProperty();	
 	
 	// view
 	
@@ -70,7 +75,19 @@ public class InsertarController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO inicializar el controlador
+
+		// bindings
+		
+		congelado.bind(congeladoCheck.selectedProperty());
+		deno.bind(denoText.textProperty());
+		familia.bind(familiaCombo.getSelectionModel().selectedItemProperty());
+		observacion.bind(observacionText.textProperty());
+		Bindings.bindBidirectional(precioText.textProperty(), precio, new NumberStringConverter());		
+		
+		// cargar el combo de familias
+		
+		familiaCombo.getItems().setAll(FamiliaDAO.getFamilias());
+		
 	}
 	
 	public BorderPane getView() {
@@ -79,16 +96,25 @@ public class InsertarController implements Initializable {
 
     @FXML
     void onCancelar(ActionEvent event) {
-    	// TODO volver al menú sin guardar los cambios
     	System.out.println("cancelar");
-    	if (onBack != null) onBack.handle(event);
+    	onBack.handle(event);
     }
 
     @FXML
     void onGuardar(ActionEvent event) {
-    	// TODO guardar los cambios y volver al menú
-    	System.out.println("guardar");
-    	if (onBack != null) onBack.handle(event);
+    	
+    	Producto producto = new Producto();
+    	producto.setCongelado(congelado.get());
+    	producto.setDenoProducto(deno.get());
+    	producto.setFamilia(familia.get());
+    	producto.setObservacion(new Observacion());
+    	producto.getObservacion().setObservacion(observacion.get());
+    	producto.setPrecioBase(precio.get());
+    	
+    	ProductoDAO.addProducto(producto);
+    	
+    	onBack.handle(event);
+    	
     }
     
     public void setOnBack(EventHandler<ActionEvent> onBack) {

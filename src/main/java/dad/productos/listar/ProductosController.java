@@ -92,10 +92,10 @@ public class ProductosController implements Initializable {
 		
 		productsTable.itemsProperty().bind(productos);
 		
-		// cargamos los productos
-		
+	}
+
+	public void reload() {
 		productos.setAll(ProductoDAO.getProductos());
-		
 	}
 	
 	public BorderPane getView() {

@@ -45,6 +45,7 @@ public class MainController implements Initializable {
 			view.setCenter(insertarController.getView());
 		});
 		menuController.setOnListProducts(e -> {
+			productosController.reload();
 			view.setCenter(productosController.getView());
 		});
 		
