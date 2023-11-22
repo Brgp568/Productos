@@ -40,7 +40,7 @@
 		<!-- backend de productos con hibernate -->
 		<dependency>
 			<groupId>aed.productos</groupId>
-			<artifactId>Hibernate</artifactId>
+			<artifactId>Fakebernate</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
