@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import dad.productos.insertar.InsertarController;
+import dad.productos.listar.ProductosController;
 import dad.productos.menu.MenuController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,6 +18,7 @@ public class MainController implements Initializable {
 	
 	private MenuController menuController;
 	private InsertarController insertarController;	
+	private ProductosController productosController;	
 	
 	// view
 	
@@ -41,6 +43,14 @@ public class MainController implements Initializable {
 		menuController = new MenuController();
 		menuController.setOnAdd(e -> {
 			view.setCenter(insertarController.getView());
+		});
+		menuController.setOnListProducts(e -> {
+			view.setCenter(productosController.getView());
+		});
+		
+		productosController = new ProductosController();
+		productosController.setOnBack(e -> {
+			view.setCenter(menuController.getView());
 		});
 		
 		insertarController = new InsertarController();

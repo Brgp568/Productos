@@ -4,6 +4,15 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import aed.productos.entities.Familia;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -20,6 +29,15 @@ public class InsertarController implements Initializable {
 	
 	private EventHandler<ActionEvent> onBack;
 	
+	// model
+	
+	private BooleanProperty congelado = new SimpleBooleanProperty();
+	private StringProperty deno = new SimpleStringProperty();
+	private ObjectProperty<Familia> familia = new SimpleObjectProperty<>();
+	private StringProperty observacion = new SimpleStringProperty();
+	private DoubleProperty precio = new SimpleDoubleProperty();
+	
+	
 	// view
 	
     @FXML
@@ -29,7 +47,7 @@ public class InsertarController implements Initializable {
     private TextField denoText;
 
     @FXML
-    private ComboBox<?> familiaCombo;
+    private ComboBox<Familia> familiaCombo;
 
     @FXML
     private TextField observacionText;
