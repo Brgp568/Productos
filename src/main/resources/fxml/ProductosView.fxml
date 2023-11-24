@@ -27,7 +27,7 @@
    <bottom>
       <HBox alignment="CENTER_RIGHT" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" onAction="#onBack" text="Volver" />
+            <Button fx:id="backButton" mnemonicParsing="false" onAction="#onBack" text="Volver" />
          </children>
          <padding>
             <Insets top="5.0" />

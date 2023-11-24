@@ -104,7 +104,7 @@ public class ProductosController implements Initializable {
 	
     @FXML
     void onBack(ActionEvent event) {
-    	if (onBack != null) onBack.handle(event);
+    	onBack.handle(event);
     }
     
     public void setOnBack(EventHandler<ActionEvent> onBack) {

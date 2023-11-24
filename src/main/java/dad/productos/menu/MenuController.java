@@ -38,8 +38,7 @@ public class MenuController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
-		
+		// do nothing
 	}
 	
 	public VBox getView() {
@@ -49,31 +48,31 @@ public class MenuController implements Initializable {
 	@FXML
     void onAddProduct(ActionEvent event) {
     	System.out.println("ir a añadir producto");
-    	if (onAdd != null) onAdd.handle(event);
+    	onAdd.handle(event);
     }
 
     @FXML
     void onDeleteProduct(ActionEvent event) {
     	System.out.println("ir a eliminar producto");
-    	if (onDelete != null) onDelete.handle(event);
+    	onDelete.handle(event);
     }
 
     @FXML
     void onListProducts(ActionEvent event) {
     	System.out.println("ir a listar productos");
-    	if (onListProducts != null) onListProducts.handle(event);
+    	onListProducts.handle(event);
     }
 
     @FXML
     void onModifyProduct(ActionEvent event) {
     	System.out.println("ir a modificar producto");
-    	if (onModify != null) onModify.handle(event);
+    	onModify.handle(event);
     }
 
     @FXML
     void onShowStock(ActionEvent event) {
     	System.out.println("ir a mostrar stock");
-    	if (onShowStock != null) onShowStock.handle(event);    	
+    	onShowStock.handle(event);    	
     }
     
     public void setOnAdd(EventHandler<ActionEvent> onInsertar) {
